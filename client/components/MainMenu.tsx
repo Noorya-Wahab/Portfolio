@@ -136,12 +136,10 @@ const MainMenu = () => {
         loop
         id="bgVideo"
         className="backgroundVideo"
-        preload="auto"
+        playsInline
       >
-        <source
-          src="/images/Japan/tokyo-street-sakura-moewalls-com.mp4"
-          type="video/mp4"
-        />
+        <source src="/images/Japan/tokyo-street.webm" type="video/webm" />
+        <source src="/images/Japan/tokyo-street.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
     </div>

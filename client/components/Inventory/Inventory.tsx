@@ -94,12 +94,10 @@ const Inventory = () => {
         loop
         id="bgVideo"
         className="backgroundVideo"
-        rel="preload"
+        playsInline
       >
-        <source
-          src="/images/cyberpunk-blade-runner.1920x1080.mp4"
-          type="video/mp4"
-        ></source>
+        <source src="/images/cyberpunk-bg.webm" type="video/webm" />
+        <source src="/images/cyberpunk-bg.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
     </div>

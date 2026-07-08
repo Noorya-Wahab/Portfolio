@@ -140,12 +140,10 @@ const AboutMe = () => {
         loop
         id="bgVideo"
         className="backgroundVideo"
-        rel="preload"
+        playsInline
       >
-        <source
-          src="/images/Japan/japanese-town-cloudy-day-moewalls-com.mp4"
-          type="video/mp4"
-        ></source>
+        <source src="/images/Japan/japanese-town.webm" type="video/webm" />
+        <source src="/images/Japan/japanese-town.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
     </div>
