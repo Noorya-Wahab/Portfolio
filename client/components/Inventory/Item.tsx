@@ -40,7 +40,24 @@ const Item = () => {
       <div className="item-box">
         <div className="item-section-one">
           <div className="item-icon-box">
-            <img src={data?.icon} alt="item icon" className="item-icon" />
+            {!data ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="80%"
+                height="80%"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={'animate-spin'}
+              >
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+            ) : (
+              <img src={data.icon} alt="item icon" className="item-icon" />
+            )}
           </div>
 
           <h1 className="item-name">{data?.name}</h1>
@@ -56,9 +73,28 @@ const Item = () => {
         </div>
         <div className="item-section-two">
           <h1 className="item-experience-title">Experience</h1>
-          <div className="item-text-box">
-            <h3 className="item-text">{data?.experience}</h3>
-          </div>
+          {!data ? (
+            <div className="svgBox">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50%"
+                height="50%"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={'animate-spin'}
+              >
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+            </div>
+          ) : (
+            <div className="item-text-box">
+              <h3 className="item-text">{data?.experience}</h3>
+            </div>
+          )}
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import useSound from 'use-sound'
 import '../styles/menu.scss'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
-import { useEffect, useState, useRef } from 'react'
+import { useState } from 'react'
 
 const MainMenu = () => {
   const soundUrl = '/sounds/90s-game-ui-2-185095.mp3'
@@ -11,28 +11,6 @@ const MainMenu = () => {
   const [playEnter] = useSound(soundEnter, { interrupt: true, preload: true })
   const [Display, setDisplay] = useState(false)
   const navigate = useNavigate()
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'x' || event.key === 'X') {
-        playEnter()
-        handleClick('/Levels')
-      }
-    }
-
-    window.addEventListener(
-      'keydown',
-      handleKeyDown as unknown as EventListener,
-    )
-
-    return () => {
-      window.removeEventListener(
-        'keydown',
-        handleKeyDown as unknown as EventListener,
-      )
-    }
-  }, [playEnter])
 
   const handleMouseEnter = () => {
     play()
@@ -75,16 +53,10 @@ const MainMenu = () => {
     })
   }
 
-  const handleVideoPlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play()
-    }
-  }
-
   return (
     <div className="menu-container">
       <div className="overlay1"></div>
-      <div className="start">Press X to start game</div>
+
       {Display && (
         <div className="details-box">
           <button
@@ -139,10 +111,10 @@ const MainMenu = () => {
             onMouseEnter={handleMouseEnter}
             onClick={() =>
               downloadFiles([
-                { url: '/files/CV.pdf', fileName: 'My_CV.pdf' },
+                { url: '/files/NEWCV.pdf', fileName: 'Nooryas_CV.pdf' },
                 {
                   url: '/files/Certificate.pdf',
-                  fileName: 'My_Certificate.pdf',
+                  fileName: 'Nooryas_Certificate.pdf',
                 },
               ])
             }
@@ -158,16 +130,13 @@ const MainMenu = () => {
           </button>
         </div>
       </div>
-
       <video
-        ref={videoRef}
+        autoPlay
         muted
         loop
-        autoPlay
         id="bgVideo"
         className="backgroundVideo"
         preload="auto"
-        onMouseEnter={handleVideoPlay}
       >
         <source
           src="/images/Japan/tokyo-street-sakura-moewalls-com.mp4"

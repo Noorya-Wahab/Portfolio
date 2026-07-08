@@ -13,7 +13,7 @@ const Projects = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const soundUrl = '/sounds/interface-4-204501.mp3'
   const soundEnter = '/sounds/arcade-ui-14-229514.mp3'
-  const [play] = useSound(soundUrl, { interrupt: true, volume: 0.3 })
+  const [play] = useSound(soundUrl, { interrupt: true, volume: 0.5 })
   const [playEnter] = useSound(soundEnter, { interrupt: true })
 
   useEffect(() => {
@@ -53,23 +53,25 @@ const Projects = () => {
 
   useEffect(() => {
     if (activeIndex === 0) {
-      setColor('#5ca4eb')
+      setColor('rgba(92, 164, 235, 0.5)')
     } else if (activeIndex === 1) {
-      setColor('#74A9FC')
+      setColor('rgba(116, 169, 252, 0.5)')
     } else if (activeIndex === 2) {
-      setColor('#AB9AD9')
+      setColor('rgba(171, 154, 217, 0.5)')
     } else if (activeIndex === 3) {
-      setColor('#01cea5')
+      setColor('rgba(1, 206, 165, 0.5)')
     } else if (activeIndex === 4) {
-      setColor('#498be1')
+      setColor('rgba(73, 139, 225, 0.5)')
     } else if (activeIndex === 5) {
-      setColor('#f92f2f')
+      setColor('rgba(249, 47, 47, 0.5)')
     } else if (activeIndex === 6) {
-      setColor('#E185B7')
+      setColor('rgba(225, 133, 183, 0.5)')
     } else if (activeIndex === 7) {
-      setColor('#6BDBFF')
+      setColor('rgba(164, 127, 212, 0.5)')
     } else if (activeIndex === 8) {
-      setColor('#BCE13A')
+      setColor('rgba(107, 219, 255, 0.5)')
+    } else if (activeIndex === 9) {
+      setColor('rgba(188, 225, 58, 0.5)')
     } else {
       setColor('')
     }
@@ -94,7 +96,10 @@ const Projects = () => {
   return (
     <div className="project-viewer">
       <button
-        style={{ textShadow: ' 0 0 calc(1vh + 1vw)' + color, color: color }}
+        style={{
+          textShadow: ' 0 0 calc(1vh + 1vw)' + color,
+          color: `${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')}`,
+        }}
         className="returnBut3"
         onClick={handleClick}
         onMouseEnter={playSound}
@@ -105,7 +110,10 @@ const Projects = () => {
         <div className="maps-content-box">
           <h1
             className="map-h1"
-            style={{ textShadow: ' 0 0 calc(1vh + 1vw)' + color, color: color }}
+            style={{
+              textShadow: ' 0 0 calc(1vh + 1vw)' + color,
+              color: `${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')}`,
+            }}
           >
             Map {currentProject.name}
           </h1>
@@ -116,7 +124,7 @@ const Projects = () => {
                 <h3 className="map-details">
                   <span
                     style={{
-                      color: color,
+                      color: `${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')}`,
                     }}
                   >
                     Total Time:
@@ -126,7 +134,7 @@ const Projects = () => {
                 <h3 className="map-details devs">
                   <span
                     style={{
-                      color: color,
+                      color: `${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')}`,
                     }}
                   >
                     Developers:
@@ -144,7 +152,7 @@ const Projects = () => {
                 onClick={playSound}
                 onMouseEnter={playSound}
                 style={{
-                  color: color,
+                  color: `${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')}`,
                 }}
               >
                 Enter Map!
@@ -153,7 +161,7 @@ const Projects = () => {
             <div className="map-about-container">
               <h3
                 style={{
-                  color: color,
+                  color: `${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')}`,
                 }}
               >
                 About this Map
@@ -173,8 +181,8 @@ const Projects = () => {
                 alt={`icon ${index}`}
                 key={index}
                 style={{
-                  filter: `drop-shadow(0 0 calc(1vh + 1vw) ${color})`,
-                  border: 'calc(0.1vh + 0.1vw) solid' + color,
+                  filter: `drop-shadow(0 0 calc(1vh + 1vw) ${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')})`,
+                  border: `calc(0.1vh + 0.1vw) solid ${color.replace(/rgba\((\d+), (\d+), (\d+), .+\)/, 'rgb($1, $2, $3)')}`,
                 }}
               />
             ))

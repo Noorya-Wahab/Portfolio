@@ -40,7 +40,7 @@
   font-family: rene;
   font-size: calc(3vh + 3vw);
   color: rgb(227, 39, 67);
-  text-shadow: 0 0 calc(2vh + 2vw) rgb(227, 39, 67), 0 0 calc(1vh + 1vw) rgb(227, 39, 67);
+  text-shadow: 0 0 calc(2vh + 2vw) rgba(227, 39, 67, 0.3), 0 0 calc(1vh + 1vw) rgba(227, 39, 67, 0.3);
 }
 
 .skills-text {
@@ -51,11 +51,11 @@
 
 .skills-grid-container {
   display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
+  flex-wrap: wrap;
+  justify-content: center;
   align-content: flex-start;
   height: calc(5 * calc(5vh + 5vw));
-  width: 80vw; 
+  width: 80vw;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -64,7 +64,7 @@
   border: calc(0.05vh + 0.05vw) white solid;
   transition: background-color 0.2s;
   background-color: rgba(255, 255, 255, 0.418);
-  height: calc(5vh + 5vw) ;
+  height: calc(5vh + 5vw);
   // flex-basis: calc((80vw / 12) - 0.1rem);
   // height: calc((60vh / 4) - calc(0.1vh + 0.05vw));
   box-sizing: border-box;
@@ -77,10 +77,12 @@
 
 .skill-image {
   width: 50%;
+  aspect-ratio: 1/1;
 }
 
+
 .skills-grid-item.empty {
-  background-color: #ffffff30; 
+  background-color: #ffffff30;
 }
 
 .skills-grid-item:hover {
@@ -129,7 +131,7 @@
 
 .item-experience-title {
   color: rgb(227, 39, 67);
-  text-shadow: 0 0 calc(1vh + 1vw) rgb(227, 39, 67);
+  text-shadow: 0 0 calc(1vh + 1vw) rgba(227, 39, 67, 0.3);
   font-size: calc(3vh + 3vw);
 }
 
@@ -144,18 +146,25 @@
   height: auto;
   box-sizing: border-box;
   animation: spin 10s infinite linear;
-  transform-style: preserve-3d; 
+  transform-style: preserve-3d;
 }
 
 .item-name {
-  text-shadow: 0 0 calc(1vh + 1vw) rgb(255, 255, 255);
+  text-shadow: 0 0 calc(1vh + 1vw) rgba(255, 255, 255, 0.3);
   font-size: calc(1.5vh + 1.5vw);
 
 }
 
 .item-text-box {
   overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+
+.item-text-box::-webkit-scrollbar {
+  display: none;
+}
+
 
 .item-text {
   font-size: calc(1vh + 1vw);
@@ -170,35 +179,37 @@
   font-size: calc(1vh + 1vw);
   margin-bottom: 5%;
   text-align: left;
-  
+
 }
 
 .confidence-bar {
   position: relative;
-  width: 100%; 
+  width: 100%;
   height: calc(0.5vh + 0.5vw);
   background-color: rgba(255, 255, 255, 0.443);
   border-radius: 5px;
 }
 
 .confidence-position {
-  height: 100%; 
+  height: 100%;
   background-color: rgb(227, 39, 67);
   box-shadow: 0 0 calc(1vh + 1vw) rgb(227, 39, 67), 0 0 calc(0.5vh + 0.5vw) rgb(227, 39, 67);
   border-radius: 5px;
   width: 0%;
-  transition: width 3s ease 0.2s 
+  transition: width 3s ease 0.2s
 }
 
 @keyframes spin {
   0% {
-    transform: rotate(0, 1, 0, 0deg); 
+    transform: rotate(0, 1, 0, 0deg);
   }
+
   50% {
     transform: rotate3d(0, 1, 0, 180deg);
   }
+
   100% {
-    transform: rotate3d(0, 1, 0, 360deg); 
+    transform: rotate3d(0, 1, 0, 360deg);
   }
 }
 
@@ -209,7 +220,7 @@
   top: 0;
   left: 0;
   color: rgb(227, 39, 67);
-  text-shadow: 0 0 calc(1vh + 1vw) rgb(227, 39, 67);
+  text-shadow: 0 0 calc(1vh + 1vw) rgba(227, 39, 67, 0.3);
   background-color: transparent;
   paint-order: stroke fill;
   text-transform: uppercase;
@@ -218,8 +229,8 @@
   clip-path: polygon(0 0, 95% 0, 100% 100%, 0 100%);
   font-family: e;
   @include flexBox();
-  transition: transform 0.5s ease; 
-  transform-origin: top left; 
+  transition: transform 0.5s ease;
+  transform-origin: top left;
 }
 
 .returnBut2:hover {
@@ -230,8 +241,32 @@
 .itemB {
   color: rgb(227, 39, 67);
   padding: calc(0.5vh + 0.5vw) calc(1vh + 1vw);
-  text-shadow: 0 0 calc(1vh + 1vw) rgb(227, 39, 67);
+  text-shadow: 0 0 calc(1vh + 1vw) rgba(227, 39, 67, 0.3);
   font-size: calc(3vh + 3vw);
+}
+
+.animate-spin {
+  animation: spinload 1s linear infinite;
+  filter: drop-shadow(0 0 calc(1vh + 1vw) white);
+}
+
+.svgBox {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spinload {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .overlay {
@@ -241,7 +276,7 @@
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 1; 
+  opacity: 1;
   pointer-events: none;
   z-index: 99999999;
 }
