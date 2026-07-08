@@ -1,18 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
 import type { AboutMe } from '../../models/AboutMe'
-import request from 'superagent'
+import { AboutMe as AboutMeData } from '../data/aboutMe'
 import '../styles/aboutMe.scss'
 import { useNavigate } from 'react-router-dom'
 import useSound from 'use-sound'
 
 const AboutMe = () => {
-  const { data } = useQuery({
-    queryKey: ['info'],
-    queryFn: async () => {
-      const response = await request.get('/api/v1/aboutMe')
-      return response.body as AboutMe[]
-    },
-  })
+  const data = AboutMeData
 
   const soundUrl = '/sounds/interface-9-204779.mp3'
   const soundEnter = '/sounds/arcade-ui-14-229514.mp3'

@@ -1,21 +1,13 @@
-import { useQuery } from '@tanstack/react-query'
-import request from 'superagent'
 import '../../styles/Inventory.scss'
-import { Item } from '../../../models/Inventory'
 import { Link } from 'react-router-dom'
 import useSound from 'use-sound'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { useEffect } from 'react'
+import { Skills } from '../../data/skills'
 
 const Inventory = () => {
-  const { data = [] } = useQuery({
-    queryKey: ['skills'],
-    queryFn: async () => {
-      const response = await request.get('/api/v1/skills')
-      return response.body as Item[]
-    },
-  })
+  const data = Skills
 
   const soundUrl =
     '/sounds/click-buttons-ui-menu-sounds-effects-button-6-203600.mp3'

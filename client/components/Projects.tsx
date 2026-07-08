@@ -1,18 +1,12 @@
-import { useQuery } from '@tanstack/react-query'
 import { useState, useEffect, useRef } from 'react'
-import { Project } from '../../models/Projects'
-import request from 'superagent'
-import '../styles/projects.scss'
 import { useNavigate } from 'react-router-dom'
+import { Projects as ProjectsData } from '../data/projects'
+import '../styles/projects.scss'
 import useSound from 'use-sound'
 import gsap from 'gsap'
 
 const Projects = () => {
-  const { data = [] } = useQuery({
-    queryKey: ['project'],
-    queryFn: async () =>
-      (await request.get('/api/v1/projects')).body as Project[],
-  })
+  const data = ProjectsData
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [color, setColor] = useState('')

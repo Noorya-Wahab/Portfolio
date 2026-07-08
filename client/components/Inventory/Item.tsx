@@ -1,21 +1,14 @@
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
 import type { Item } from '../../../models/Inventory'
-import request from 'superagent'
 import '../../styles/Inventory.scss'
 import { useNavigate } from 'react-router-dom'
 import useSound from 'use-sound'
+import { Skills } from '../../data/skills'
 
 const Item = () => {
   const { id } = useParams()
 
-  const { data } = useQuery({
-    queryKey: ['skills'],
-    queryFn: async () => {
-      const response = await request.get(`/api/v1/skills/${id}`)
-      return response.body
-    },
-  })
+  const data = Skills.find((skill) => skill.id === Number(id))
 
   const soundUrl =
     '/sounds/click-buttons-ui-menu-sounds-effects-button-6-203600.mp3'
